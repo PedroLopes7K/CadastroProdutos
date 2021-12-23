@@ -29,6 +29,8 @@ input[type='number']::-webkit-inner-spin-button {
 .container2 button {
   margin: 15px auto;
   padding: 5px;
+  background: blue;
+  color: white;
 }
 
 div.inputs {
