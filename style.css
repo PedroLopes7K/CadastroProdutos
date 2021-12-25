@@ -1,19 +1,23 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 body {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 50px;
   text-align: center;
-  background: rgb(204, 204, 204);
+  background: rgb(26, 24, 24);
 }
 .container1 {
+  margin: 15px auto;
   border: 5px solid red;
   padding: 30px;
+}
+.container1 h1 {
+  color: rgb(201, 201, 201);
 }
 
 .container2 {
@@ -22,22 +26,39 @@ body {
   flex-direction: column;
   margin: 25px auto;
 }
+.container2 label {
+  font-size: 20px;
+  color: rgb(201, 201, 201);
+}
 
 input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-.container2 button {
-  margin: 15px auto;
-  padding: 5px;
-  background: blue;
-  color: white;
-}
 
 div.inputs {
   display: flex;
-  align-items: flex-start;
-  /* justify-content: center; */
-  flex-direction: column;
+  margin: 5px auto;
+}
+div.inputs input {
+  margin: auto 15px;
+  width: 200px;
+  height: 25px;
+  border-radius: 5px;
+}
+.container2 button {
+  margin-top: 30px;
+  width: 200px;
+  height: 40px;
+  padding: 5px;
+  background: rgb(57, 57, 225);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.container2 button:hover {
+  background: blue;
 }
 
 /* TABELA */
@@ -49,26 +70,28 @@ table {
   margin: 20px auto;
 }
 thead {
-  background: rgb(170, 167, 167);
+  background: rgb(218, 218, 218);
 }
 thead tr th {
   padding: 10px;
 }
-tbody tr:nth-child(even) {
+/* tbody tr:nth-child(even) {
   background-color: #eee;
-}
+} */
 
 td {
-  /* height: 20px; */
   padding: 10px;
   text-align: center;
-  border: 2px solid black;
+  border: 2px solid rgb(170, 167, 167);
   font-weight: 800;
+  color: rgb(225, 223, 223);
 }
 td.TD4 {
   border: 0px;
 }
 td.TD4 button {
+  width: 100px;
+  height: 40px;
   padding: 3px;
   border-radius: 5px;
   color: #eee;

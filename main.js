@@ -75,7 +75,6 @@ function AddTable(Dados) {
     td2.remove()
     td3.remove()
     DeleteProduct(Dados.id)
-    // dados.remove(DadosProduto.Produto)
   })
   Tr.appendChild(td1)
   Tr.appendChild(td2)
