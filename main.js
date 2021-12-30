@@ -95,11 +95,6 @@ function DeleteProduct(id) {
     }
   }
 
-  // dados = dados.filter(item => {
-  //   return item.id !== id
-  // })
-  // dados.forEach(element => {
-  //   console.log(element)
-  // })
+
   AtualizarLocalStorage()
 }
