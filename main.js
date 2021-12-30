@@ -94,7 +94,5 @@ function DeleteProduct(id) {
       dados.splice(i, 1)
     }
   }
-
-
   AtualizarLocalStorage()
 }
