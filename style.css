@@ -11,22 +11,22 @@ body {
   text-align: center;
   background: rgb(26, 24, 24);
 }
-.container1 {
+form {
   margin: 15px auto;
   border: 5px solid red;
   padding: 30px;
 }
-.container1 h1 {
+form h1 {
   color: rgb(201, 201, 201);
 }
 
-.container2 {
+.container {
   display: flex;
   align-items: center;
   flex-direction: column;
   margin: 25px auto;
 }
-.container2 label {
+.container label {
   font-size: 20px;
   color: rgb(201, 201, 201);
 }
@@ -45,7 +45,7 @@ div.inputs input {
   height: 25px;
   border-radius: 5px;
 }
-.container2 button {
+.container button {
   margin-top: 30px;
   width: 200px;
   height: 40px;
@@ -70,26 +70,33 @@ table {
   margin: 20px auto;
 }
 thead {
-  background: rgb(218, 218, 218);
+  background: rgb(57, 57, 225);
+  color: #eee;
 }
+
 thead tr th {
+  border: none;
+
   padding: 10px;
 }
 
 td {
   padding: 10px;
   text-align: center;
-  border: 2px solid rgb(170, 167, 167);
+  background: whitesmoke;
+  border: none;
   font-weight: 800;
-  color: rgb(225, 223, 223);
+  color: black;
 }
-td.TD4 {
-  border: 0px;
+td:nth-child(4) {
+  background: transparent;
+  border: none;
 }
 td.TD4 button {
   width: 100px;
   height: 40px;
   padding: 3px;
+  border: none;
   border-radius: 5px;
   color: #eee;
 }

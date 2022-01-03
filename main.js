@@ -8,12 +8,6 @@ const AtualizarLocalStorage = () => {
   localStorage.setItem('NameProduct', JSON.stringify(dados))
 }
 
-// dados.forEach(item => {
-//   AddTable(item)
-// })
-// for (let i = 0; i < dados.length; i++) {
-//   console.log(dados[i].Produto)
-// }
 for (let i = 0; i < dados.length; i++) {
   AddTable(dados[i])
 }
@@ -39,8 +33,8 @@ function verify() {
 
   let DadosProduto = {
     Produto: Prodt.value.toUpperCase(),
-    preco: Prc.value,
-    amount: Qnt.value,
+    Preco: Number(Prc.value),
+    Quantidade: Qnt.value,
     id: parseInt(Math.random() * 3500)
   }
   dados.push(DadosProduto)
@@ -57,10 +51,10 @@ function AddTable(Dados) {
   td1.innerHTML = Dados.Produto
 
   const td2 = document.createElement('td')
-  td2.innerHTML = `R$ ${Number(Dados.preco).toFixed(2).replace('.', ',')}`
+  td2.innerHTML = `R$ ${Number(Dados.Preco).toFixed(2).replace('.', ',')}`
 
   const td3 = document.createElement('td')
-  td3.innerHTML = `${Dados.amount} UN`
+  td3.innerHTML = `${Dados.Quantidade} UN`
 
   const Btn = document.createElement('button')
   Btn.innerHTML = 'DELETE'
@@ -94,5 +88,6 @@ function DeleteProduct(id) {
       dados.splice(i, 1)
     }
   }
+
   AtualizarLocalStorage()
 }
