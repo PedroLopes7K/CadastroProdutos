@@ -95,6 +95,7 @@ td:nth-child(4) {
 td.TD4 button {
   width: 100px;
   height: 40px;
+  margin: 0 6px;
   padding: 3px;
   border: none;
   border-radius: 5px;

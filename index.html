@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="modal.css" />
     <title>Tabela De Estoque</title>
   </head>
   <body>
@@ -39,6 +40,28 @@
       </thead>
       <tbody id="body"></tbody>
     </table>
+
+    <div id="modal" class="none">
+      <h2 id="productChangeName">Atualizar</h2>
+
+      <label class="labelUpdate" for="productName">
+        Nome do Produto:
+        <input type="text" id="product" minlength="2" autocomplete="off"
+      /></label>
+      <br />
+      <label class="labelUpdate" for="price">
+        Preço: <input type="number" id="price" autocomplete="off" />
+      </label>
+      <br />
+
+      <label class="labelUpdate" for="amount"
+        >Quantidade: <input type="number" id="amount" autocomplete="off" />
+      </label>
+
+      <div id="btns">
+        <button id="update">UPDATE</button>
+      </div>
+    </div>
 
     <script src="main.js"></script>
   </body>

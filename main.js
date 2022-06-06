@@ -56,19 +56,26 @@ function AddTable(Dados) {
   const td3 = document.createElement('td')
   td3.innerHTML = `${Dados.Quantidade} UN`
 
-  const Btn = document.createElement('button')
-  Btn.innerHTML = 'DELETE'
-  Btn.style.background = 'red'
+  const btnDelete = document.createElement('button')
+  btnDelete.innerHTML = 'DELETE'
+  btnDelete.style.background = 'red'
+  const btnUpdate = document.createElement('button')
+  btnUpdate.innerHTML = 'UPDATE'
+  btnUpdate.style.background = 'dodgerblue'
 
   const td4 = document.createElement('td')
   td4.classList.add('TD4')
-  td4.appendChild(Btn)
-  Btn.addEventListener('click', event => {
+  td4.appendChild(btnDelete)
+  td4.appendChild(btnUpdate)
+  btnDelete.addEventListener('click', event => {
     event.target.parentElement.remove()
     td1.remove()
     td2.remove()
     td3.remove()
-    DeleteProduct(Dados.id)
+    deleteProduct(Dados.id)
+  })
+  btnUpdate.addEventListener('click', event => {
+    openModal(Dados.id)
   })
   Tr.appendChild(td1)
   Tr.appendChild(td2)
@@ -82,7 +89,7 @@ function AddTable(Dados) {
   Qnt.value = ''
 }
 
-function DeleteProduct(id) {
+function deleteProduct(id) {
   for (let i = 0; i < dados.length; i++) {
     if (dados[i].id == id) {
       dados.splice(i, 1)
@@ -90,4 +97,32 @@ function DeleteProduct(id) {
   }
 
   AtualizarLocalStorage()
+}
+
+const modal = document.getElementById('modal')
+
+function openModal(id) {
+  modal.classList.remove('none')
+  buttonUpdate = document.getElementById('update')
+  buttonUpdate.addEventListener('click', event => {
+    updateProduct(id)
+  })
+}
+
+function updateProduct(productId) {
+  // alert(`Atualizar produto com ID ${productId}`)
+  const newName = document.getElementById('product').value
+  const newPrice = document.getElementById('price').value
+  const newAmount = document.getElementById('amount').value
+
+  for (let i = 0; i < dados.length; i++) {
+    if (dados[i].id == productId) {
+      dados[i].Produto = newName
+      dados[i].Preco = newPrice
+      dados[i].Quantidade = newAmount
+    }
+  }
+  AtualizarLocalStorage()
+  modal.classList.add('none')
+  location.reload()
 }
