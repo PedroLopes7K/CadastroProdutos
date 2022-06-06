@@ -100,4 +100,11 @@ td.TD4 button {
   border: none;
   border-radius: 5px;
   color: #eee;
+  cursor: pointer;
+}
+.vazio {
+  color: #eee;
+}
+.empty {
+  display: none;
 }

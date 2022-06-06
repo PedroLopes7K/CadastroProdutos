@@ -1,8 +1,18 @@
 let Prodt = document.querySelector('#Produto')
 let Prc = document.querySelector('#Preco')
 let Qnt = document.querySelector('#Qnt')
+let vazio = document.querySelector('.vazio')
 
 let dados = JSON.parse(localStorage.getItem('NameProduct')) || []
+
+function verifyEmptyData() {
+  if (dados.length == 0) {
+    vazio.classList.remove('empty')
+  } else {
+    vazio.classList.add('empty')
+  }
+}
+verifyEmptyData()
 
 const AtualizarLocalStorage = () => {
   localStorage.setItem('NameProduct', JSON.stringify(dados))
@@ -39,7 +49,7 @@ function verify() {
   }
   dados.push(DadosProduto)
   AtualizarLocalStorage()
-
+  verifyEmptyData()
   AddTable(DadosProduto)
 }
 
@@ -75,7 +85,9 @@ function AddTable(Dados) {
     deleteProduct(Dados.id)
   })
   btnUpdate.addEventListener('click', event => {
-    openModal(Dados.id)
+    // let allupdates = document.querySelectorAll('#update')
+    // allupdates.removeEventListener('click', updateProduct())
+    openModal(Dados.id, Dados.Produto)
   })
   Tr.appendChild(td1)
   Tr.appendChild(td2)
@@ -95,18 +107,27 @@ function deleteProduct(id) {
       dados.splice(i, 1)
     }
   }
-
   AtualizarLocalStorage()
+  verifyEmptyData()
 }
 
-const modal = document.getElementById('modal')
+const modal = document.querySelector('.modal')
 
-function openModal(id) {
+function openModal(id, produto) {
   modal.classList.remove('none')
-  buttonUpdate = document.getElementById('update')
+  const title = document.getElementById('productChangeName')
+  title.innerHTML = `Atualizar ${produto}`
+  const buttonUpdate = document.getElementById('update')
+  const buttonClose = document.getElementById('close')
   buttonUpdate.addEventListener('click', event => {
     updateProduct(id)
   })
+  buttonClose.addEventListener('click', event => {
+    buttonUpdate.removeEventListener('click', updateProduct())
+    modal.classList.add('none')
+  })
+  // buttonClose.addEventListener('click', closeModal(buttonUpdate))
+  // verifyClick()
 }
 
 function updateProduct(productId) {
@@ -114,10 +135,14 @@ function updateProduct(productId) {
   const newName = document.getElementById('product').value
   const newPrice = document.getElementById('price').value
   const newAmount = document.getElementById('amount').value
+  // if (newName == '' || newPrice == '' || newAmount == '') {
+  //   alert('INSIRA TODOS OS DADOS!')
+  //   return
+  // }
 
   for (let i = 0; i < dados.length; i++) {
     if (dados[i].id == productId) {
-      dados[i].Produto = newName
+      dados[i].Produto = newName.toUpperCase()
       dados[i].Preco = newPrice
       dados[i].Quantidade = newAmount
     }
@@ -126,3 +151,19 @@ function updateProduct(productId) {
   modal.classList.add('none')
   location.reload()
 }
+
+// function closeModal(btn) {
+//   btn.removeEventListener('click', updateProduct())
+//   modal.classList.add('none')
+// }
+
+// function verifyClick() {
+//   setTimeout(() => {
+//     document.addEventListener('click', event => {
+//       let isClickModal = modal.contains(event.target)
+//       if (!isClickModal) {
+//         closeModal(buttonUpdate)
+//       }
+//     })
+//   }, 5000)
+// }
